@@ -1,5 +1,5 @@
-import BookForm from "./components/BookForm";
-import BookList from "./components/BookList";
+import BookForm from "../components/BookForm";
+import BookList from "../components/BookList";
 import { useState, useEffect } from "react";
 
 const BookContainer = () => {
