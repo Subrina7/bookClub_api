@@ -1,24 +1,32 @@
+import BookForm from "./components/BookForm";
+import BookList from "./components/BookList";
 import { useState, useEffect } from "react";
 
 const BookContainer = () => {
 
-    const[book, setBook] = useState([]);
+    const[books, setBooks] = useState([]);
+    const[error, setError] = useState("");
 
 const fetchBook = async () => {
     const response = await fetch("https://openlibrary.org/books/OL33891821M.json");
-
     const jsonData = await response.json();
 
-    setBook(jsonData)
+    setBooks(jsonData)
 }
 
 useEffect(() => {
-    fetchBook();
-}, [])
+    fetch(`https://openlibrary.org/books/OL33891821M.json`)
+      .then((response) => response.json())
+      .then((response) => setBooks(response.works))
+      .catch((err) => setError(err.message));
+}, []);
+
     return (
         <>
         <h1>Hey from the book container</h1>
-        <BookContainer book={book}/>
+        <BookForm/>
+        <BookList books={books}/>
+        {error && <p>Error: {error}</p>}
         </>
     );
 }
