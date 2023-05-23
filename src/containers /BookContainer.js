@@ -18,6 +18,7 @@ useEffect(() => {
     return (
         <>
         <h1>Hey from the book container</h1>
+        <BookContainer book={book}/>
         </>
     );
 }
