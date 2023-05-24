@@ -1,13 +1,13 @@
 import Book from "./Book";
 
 const BookList = ({ books }) => {
-  const bookComponents = books.map((book) => {
-
-    return (
-      <Book key={book.key}
-            book={book}/>
-    );
-  });
+  const bookComponents = books 
+    ? books.map((book, index) => {
+        return (
+          <Book key={index} book={book} />
+        );
+      })
+    : null;
 
   return (
     <>
